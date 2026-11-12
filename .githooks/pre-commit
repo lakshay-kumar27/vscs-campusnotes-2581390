@@ -1,0 +1,9 @@
+#!/bin/sh
+if git diff --cached --unified=0 -- . ':(exclude).githooks/**' | grep -E '^\+.*(TODO|FIXME)'
+then
+    echo "ERROR: TODO/FIXME found in staged files."
+    exit 1
+fi
+
+echo "Pre-commit check passed."
+exit 0
